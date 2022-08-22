@@ -8,10 +8,11 @@
 import SwiftUI
 import Seeker
 import Tracing
+import SwiftPrometheus_Integration
 
 struct ContentView: View {
     @LoggerInstance var logger
-    @MetricsInstance var metrics
+    @PromMetricsInstance var metrics
     @TracerInstance var tracer
     
     var body: some View {
@@ -30,7 +31,8 @@ struct ContentView: View {
     }
     
     private func generateLog() {
-        logger.log(level: .info, "Just generated log from main screen.")
+        logger.log(level: .info, "\(logger.label):Navigated to tuition view from profile screen", metadata: ["label":.string(logger.label)])
+        logger.log(level: .info, "\(logger.label):Tuition fee not paid")
     }
     
     private func generateMetric() {
@@ -40,20 +42,28 @@ struct ContentView: View {
     
     private func generateTrace() {
         DispatchQueue.global(qos: .background).async {
-            let rootSpan = tracer.startSpan("initial_span", baggage: .topLevel)
+            let rootSpan = tracer.startSpan("fetch_tuition_status", baggage: .topLevel)
 
             sleep(1)
             rootSpan.addEvent(SpanEvent(
-                name: "Discovered the meaning of life",
-                attributes: ["meaning_of_life": 42]
+                name: "Fetch failed",
+                attributes: ["error_code": 402]
             ))
-
-            let childSpan = tracer.startSpan("child_span", baggage: rootSpan.baggage)
-
+            sleep(1)
+//
+            let childSpan = tracer.startSpan("fetch_tuition_status_retry", baggage: rootSpan.baggage)
+            
+            sleep(1)
+            sleep(1)
+            childSpan.addEvent(SpanEvent(
+                name: "Fetch successfull",
+                attributes: ["tuition_status": "unpaid", "try_number": 2]
+            ))
             sleep(1)
             childSpan.end()
 
             sleep(1)
+            
             rootSpan.end()
         }
     }

@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var TracerButton: UIButton!
     
     private var logger = Seeker.logger
-    private var metrics = Seeker.metrics
+    private var metrics = Seeker.promMetrics
     private var tracer = Seeker.tracer
     
     @IBAction func didTapLogger(_ sender: Any) {

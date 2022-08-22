@@ -7,20 +7,20 @@
 
 import UIKit
 import Seeker
+import Default_Configuration
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // Logger Setup
-        Seeker.loggerSetup()
+        // Setup the Default Configuration
+        Seeker.setupDefaultConfiguration(host: "localhost")
         
-        // Tracer Setup
-        Seeker.tracerSetup()
-        
-        // Metrics Setup
-        Seeker.metricsSetup()
+        // Equivalent to:
+//        Seeker.setupLoggingELKLogger(hostname: "localhost")
+//        Seeker.setupSwiftPrometheusMetrics(hostname: "localhost")
+//        Seeker.setupOpenTelemetryTracer(hostname: "localhost")
         
         Seeker.logger.info("App Started!")
         // Override point for customization after application launch.

@@ -19,12 +19,12 @@
       }
     },
     {
-      "identity" : "opentelemetry-swift-ios",
+      "identity" : "opentelemetry-swift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/snkirov/opentelemetry-swift-ios.git",
+      "location" : "https://github.com/slashmo/opentelemetry-swift",
       "state" : {
-        "revision" : "c6a1668f1c701d15a753c4f658f715ff5acdd614",
-        "version" : "0.2.1"
+        "branch" : "main",
+        "revision" : "92f9788fea46f8389370a794a2f05c7ddcd8a01f"
       }
     },
     {
@@ -33,7 +33,7 @@
       "location" : "https://github.com/snkirov/seeker",
       "state" : {
         "branch" : "master",
-        "revision" : "3cf5d7385fc880d8474e03d05ac0d48021750844"
+        "revision" : "a12749529719bfb56e14cc6a4a69202aa78c9dde"
       }
     },
     {
@@ -66,10 +66,10 @@
     {
       "identity" : "swift-log-elk",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/snkirov/swift-log-elk.git",
+      "location" : "https://github.com/Apodini/swift-log-elk",
       "state" : {
-        "revision" : "33568756dd46d00b7b3da63f11bd16c909df633b",
-        "version" : "0.2.3"
+        "branch" : "develop",
+        "revision" : "33568756dd46d00b7b3da63f11bd16c909df633b"
       }
     },
     {

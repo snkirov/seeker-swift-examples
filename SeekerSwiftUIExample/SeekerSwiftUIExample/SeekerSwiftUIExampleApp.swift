@@ -7,19 +7,19 @@
 
 import SwiftUI
 import Seeker
+import Default_Configuration
 
 @main
 struct SeekerApp: App {
     
     init() {
-        // Logger Setup
-        Seeker.loggerSetup()
+        // Default Configration Setup
+        Seeker.setupDefaultConfiguration(host: "localhost")
         
-        // Tracer Setup
-        Seeker.tracerSetup()
-        
-        // Metrics Setup
-        Seeker.metricsSetup()
+        // Equivalent to:
+//        Seeker.setupLoggingELKLogger(hostname: "localhost")
+//        Seeker.setupSwiftPrometheusMetrics(hostname: "localhost")
+//        Seeker.setupOpenTelemetryTracer(hostname: "localhost")
         
         Seeker.logger.info("App Started!")
     }
